@@ -8,9 +8,9 @@
 <meta name="mobile-web-app-capable" content="yes" />
 <meta name="theme-color" content="#11152A" />
 <title>Lexify</title>
-<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.25.6/babel.min.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   html, body { margin: 0; padding: 0; background: #05060D; }
@@ -19,7 +19,25 @@
 </style>
 </head>
 <body>
-<div id="root"></div>
+<div id="root">
+  <div style="color:#9BA3C7;font-family:sans-serif;padding:48px 24px;text-align:center;">
+    Yuklanmoqda... agar bu xabar 10 soniyadan ko'p tursa, internet ulanishini tekshiring va sahifani yangilang.
+  </div>
+</div>
+<script>
+  window.addEventListener("error", function (e) {
+    var root = document.getElementById("root");
+    if (root) {
+      root.innerHTML = '<div style="color:#F2657D;font-family:sans-serif;padding:24px;white-space:pre-wrap;">Xatolik yuz berdi:\n' + (e.message || e) + '</div>';
+    }
+  });
+  window.addEventListener("unhandledrejection", function (e) {
+    var root = document.getElementById("root");
+    if (root) {
+      root.innerHTML = '<div style="color:#F2657D;font-family:sans-serif;padding:24px;white-space:pre-wrap;">Xatolik yuz berdi:\n' + (e.reason && e.reason.message ? e.reason.message : e.reason) + '</div>';
+    }
+  });
+</script>
 <script type="text/babel" data-presets="react">
 const { useState, useEffect, useCallback, useRef } = React;
 
